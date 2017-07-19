@@ -1,15 +1,16 @@
 
 const express = require('express')
 const app = express()
+const dirApp = "app"
 
-app.use(express.static('app'))
+app.use(express.static(dirApp))
+
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/' + dirApp +'/test.html');
+})
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!')
-})
-
-app.get('/', function (req, res) {
-  res.sendFile('app/test.html');
 })
 
 /*
