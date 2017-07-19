@@ -1,22 +1,9 @@
 {
-  "name": "test",
+  "name": "Retirement Road",
   "version": "1.0.0",
-  "description": "This is a test.",
+  "description": "This is the Retirement Road application.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/davidisovitsch/Test.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/davidisovitsch/Test/issues"
-  },
-  "homepage": "https://github.com/davidisovitsch/Test#readme",
-  "dependencies": {
-    "express": "^4.15.3"
   }
 }
