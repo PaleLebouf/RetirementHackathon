@@ -4,5 +4,10 @@
 
 #bottomBanner{
     background-color: black;
-    width:100vw;
+    position:fixed;
+   left:0px;
+   bottom:0px;
+   height:10vh;
+   width:100%;
+   
 }
