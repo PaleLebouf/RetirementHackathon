@@ -4,19 +4,23 @@
         <link rel="stylesheet" href="/styles/odometer-theme-car.css">
         <link rel="stylesheet" href="/components/statusBarDirective/statusBarDirective.css">
     </head>
-    <body ng-controller="homeCtrl">
-        <h1>{{hello}} Hackathon</h1>
+    <body>
+        <div ng-view></div>
         
         <scrolling-backgound></scrolling-background>
+        <div id="odometer" class="odometer">123</div>
         <status-bar></status-bar>        
         <script src="/angular/angular.min.js"></script> 
         <script src="/angular-aria/angular-aria.min.js"></script> 
         <script src="/angular-animate/angular-animate.min.js"></script> 
         <script src="/angular-material/angular-material.min.js"></script> 
+        <script src="/angular-route/angular-route.min.js"></script> 
         <script src="/home.js"></script> 
         <script src="/scripts/odometer.js"></script>
         <script src="/Components/statusBarDirective/statusBarDirective.js"></script>
         <script src="/Components/Background/BackgroundDirective.js"></script>
         <script src="/Components/Background/BackgroundController.js"></script>
+        <script src="/Components/start/start.js"></script>
+        <script src="/Components/game/game.js"></script>
     </body>
 </html>
