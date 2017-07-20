@@ -7,4 +7,5 @@
         };
     };
 
+    angular.module('retirementRoad').directive('scrollingBackground', scrollingBackground);
 })();
