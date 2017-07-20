@@ -1,5 +1,14 @@
-var app = angular.module("retirementRoad", ["ngMaterial"]);
-
-app.controller("homeCtrl", ["$scope", function($scope) {
-    $scope.hello = "Hello";
+var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute"])
+app.config(['$routeProvider', '$locationProvider',
+ function ($routeProvider) {
+     $routeProvider
+       .when('/start', {
+           templateUrl: 'components/start/start.html',
+           controller: 'startCtrl'
+       })
+       .when('/game', {
+           templateUrl: 'components/game/game.html',
+           controller: 'gameCtrl'
+       })
+       .otherwise('/start');   
 }]);
