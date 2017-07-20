@@ -1,9 +1,21 @@
 {
-  "name": "Retirement Road",
+  "name": "retirementroad",
   "version": "1.0.0",
   "description": "This is the Retirement Road application.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
-  }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaleLebouf/RetirementHackathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaleLebouf/RetirementHackathon/issues"
+  },
+  "homepage": "https://github.com/PaleLebouf/RetirementHackathon#readme"
 }
