@@ -4,9 +4,10 @@ const app = express()
 const dirApp = "app"
 
 app.use(express.static(dirApp))
+app.use(express.static("node_modules"))
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/' + dirApp +'/test.html');
+  res.sendFile(__dirname + '/' + dirApp +'/home.html');
 })
 
 app.listen(process.env.PORT || 3000, function () {
