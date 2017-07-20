@@ -10,5 +10,9 @@ app.config(['$routeProvider', '$locationProvider',
            templateUrl: 'components/game/game.html',
            controller: 'gameCtrl'
        })
+       .when('/pause', {
+           templateUrl: 'components/map/map.html',
+           controller: 'mapCtrl'
+       })
        .otherwise('/start');   
 }]);
