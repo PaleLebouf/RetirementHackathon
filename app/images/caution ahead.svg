@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="245px" viewBox="0 0 128 245" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>speed bump copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-884.000000, -48.000000)">
+            <g id="speed-bump-copy" transform="translate(884.000000, 48.000000)">
+                <g id="crosswalk">
+                    <g id="Group-2" transform="translate(47.000000, 121.000000)">
+                        <rect id="SVGCleanerId_0_1_" fill="#BCBDBC" x="10.4838428" y="0" width="14.0112505" height="120.397977"></rect>
+                        <rect id="Rectangle-path" fill="#000000" opacity="0.2" x="10.4838428" y="0" width="14.0112505" height="14.7360114"></rect>
+                        <path d="M34.9836964,123.987269 L34.9836964,119.881878 C34.9836964,117.702835 33.2176124,115.936751 31.037776,115.936751 L3.9459204,115.936751 C1.7668774,115.936751 0,117.702835 0,119.881878 L0,123.987269 L34.9836964,123.987269 L34.9836964,123.987269 Z" id="Shape" fill="#2B3E49"></path>
+                    </g>
+                    <path d="M68.0055,1.6525 C65.8025,-0.5505 62.19775,-0.5505 59.99475,1.6525 L1.65225,59.9945 C-0.55075,62.1975 -0.55075,65.80225 1.65225,68.00525 L59.9945,126.3475 C62.1975,128.5505 65.80225,128.5505 68.00525,126.3475 L126.3475,68.00525 C128.5505,65.80225 128.5505,62.1975 126.3475,59.9945 L68.0055,1.6525 L68.0055,1.6525 Z" id="Shape" fill="#FFB819"></path>
+                    <path d="M64,122.409 C63.4705,122.409 62.94075,122.207 62.537,121.80275 L6.19725,65.46325 C5.809,65.07525 5.591,64.549 5.591,64.00025 C5.591,63.4515 5.809,62.925 6.19725,62.53725 L62.53675,6.19775 C63.34475,5.38975 64.65525,5.38975 65.463,6.19775 L121.8025,62.537 C122.19075,62.925 122.40875,63.45125 122.40875,64 C122.40875,64.54875 122.19075,65.07525 121.8025,65.463 L65.463,121.80275 C65.05925,122.20675 64.52975,122.409 64,122.409 L64,122.409 Z M10.587,64 L64,117.413 L117.413,64 L64,10.587 L10.587,64 L10.587,64 Z" id="Shape" fill="#333E48"></path>
+                </g>
+                <text id="CAUTION-AHEAD" font-family="Arial-Black, Arial Black" font-size="16" font-weight="700" line-spacing="18" letter-spacing="0.189999998" fill="#000000">
+                    <tspan x="22" y="66">CAUTION</tspan>
+                    <tspan x="32.2303125" y="84">AHEA</tspan>
+                    <tspan x="82.76375" y="84">D</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
