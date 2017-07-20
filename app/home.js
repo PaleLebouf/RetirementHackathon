@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute"])
 app.config(['$routeProvider', '$locationProvider',
  function ($routeProvider) {
@@ -13,10 +12,3 @@ app.config(['$routeProvider', '$locationProvider',
        })
        .otherwise('/start');   
 }]);
-=======
-var app = angular.module("retirementRoad", ["ngMaterial"]);
-
-app.controller("homeCtrl", ["$scope", function($scope) {
-    $scope.hello = "Hello";
-}]);
->>>>>>> 00bc58409291873e63b908a3f8ba598fbe2ce41c
