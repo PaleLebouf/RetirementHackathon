@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="myprofile">
+    <head>
+        <link rel="stylesheet" type="text/css" href="profile.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+<script src="profile.js"></script>
+
+
+
+</head>
+    <body ng-controller="ProfileController">
+
+<div class="content">
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+            
+          <md-card-title-text>
+            <span class="md-headline">Create Your Profile</span>
+            <span class="md-subhead">Where do you see yourself in Retirement? </span>
+          </md-card-title-text>
+            </md-card-title> 
+            <div layout="column">
+            <md-card-content>
+                <div layout="column">
+                    <md-input-container>
+                        <label>Income:</label>
+                        <input ng-model="income">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Debt:</label>
+                        <input ng-model="debt">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Age:</label>
+                        <md-select ng-model="x" >
+                            <md-option  ng-repeat="x in age" ng-value="x">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    
+                </div>
+            </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-warn md-hue-2">Go</md-button>
+        </md-card-actions>
+      </md-card>
+  </md-content>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </body>
+</html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute"])
 app.config(['$routeProvider', '$locationProvider',
  function ($routeProvider) {
