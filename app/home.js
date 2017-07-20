@@ -1,4 +1,4 @@
-var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute"])
+var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute",'ui.odometer'])
 app.config(['$routeProvider', '$locationProvider',
  function ($routeProvider) {
      $routeProvider
