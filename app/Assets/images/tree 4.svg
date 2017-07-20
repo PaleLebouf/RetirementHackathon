@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="73px" viewBox="0 0 52 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>tree 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-1095.000000, -585.000000)">
+            <g id="tree-4" transform="translate(1094.853761, 585.000000)">
+                <polygon id="Shape" fill="#D68231" points="22.8935109 29 22.8935109 48.20025 10.9530109 39.1485 8.47826087 42.41275 22.8935109 53.34075 22.8935109 72.237 31.9205109 72.237 31.9205109 29"></polygon>
+                <ellipse id="Oval" fill="#7CDFA8" cx="8.08751087" cy="38.89275" rx="7.60925" ry="6.89275"></ellipse>
+                <path d="M32.5055109,29 L32.5055109,44.26825 C31.0262609,44.473 29.5180109,44.57925 27.9920109,44.57925 C26.4657609,44.57925 24.9577609,44.473 23.4782609,44.26825 L23.4782609,29 L32.5055109,29 L32.5055109,29 Z" id="Shape" fill="#000000" opacity="0.2"></path>
+                <ellipse id="Oval" fill="#00AD68" cx="27.7230109" cy="20.375" rx="24.24475" ry="20.375"></ellipse>
+                <path d="M15.8532174,25.5332582 C13.4832174,23.1635082 11.1274674,15.4380082 11.5217174,15.0435082 C11.9162174,14.6490082 19.6417174,17.0047582 22.0114674,19.3750082 C24.3814674,21.7455082 24.9244674,25.0447582 23.2237174,26.7455082 C21.5237174,28.4460082 18.2234674,27.9035082 15.8532174,25.5332582 L15.8532174,25.5332582 Z" id="Shape" fill="#218649"></path>
+            </g>
+        </g>
+    </g>
+</svg>
