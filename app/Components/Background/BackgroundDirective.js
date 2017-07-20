@@ -1,11 +1,11 @@
-(function(){
+(function () {
 
-    function scrollingBackground()
-    {
-        return{
-            templateUrl:"/Components/BackgroundTemplate.html"
+
+    function background() {
+        return {
+            templateUrl: '/components/Background/BackgroundTemplate.html'
         };
-    };
+    }
 
-    angular.module('retirementRoad').directive('scrollingBackground', scrollingBackground);
+    angular.module('retirementRoad').directive('background', background);
 })();
