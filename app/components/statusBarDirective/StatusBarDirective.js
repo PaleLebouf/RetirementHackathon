@@ -6,10 +6,7 @@
     }
 
     function statusBarCtrl($scope, calcService) {
-        $scope.calcService = calcService;
-        return {
-            templateUrl: '/components/statusBarDirective/statusBarTemplate.html'
-        };
+        $scope.data = calcService.data;
     }
 
     angular.module('retirementRoad')
