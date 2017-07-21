@@ -1,6 +1,5 @@
 
-<div class="content background-pic">
-  
+<div class="content background-pic" ng-controller="ProfileController">
       <md-card layout-align="center">
         <md-card-title >
             
@@ -11,31 +10,31 @@
             </md-card-title> 
 
             <md-card-content>
-                <label>Age:  </label>
+                <label>Age: asssss</label>
              <md-input-container >
-                <md-radio-group layout="row" layout-align="space-between" layng-model="x">
+                <md-radio-group layout="row" layout-align="space-between" ng-model="calcService.initialAge">
                          <md-radio-button  ng-repeat="x in age" ng-value="x" class="md-warn md-hue-2">{{ x}}</md-radio-button>
                     </md-radio-group>
             </md-input-container>
 
     <md-slider-container>
       <div>
-        <span>Income:</span>
+        <span>Starting Salary:</span>
       </div>
-      <md-slider ng-model="invert" step="1000" min="20000"  max="500000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
+      <md-slider ng-model="calcService.initialSalary" step="1000" min="20000"  max="500000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
     </md-slider-container>
     <md-input-container>
-        <input flex ng-model="invert" aria-label="regular-slider">
+        <input flex ng-model="calcService.initialSalary" aria-label="regular-slider">
       </md-input-container>
 
  <md-slider-container>
       <div>
-        <span>Debt:</span>
+        <span>Starting Debt:</span>
       </div>
-      <md-slider ng-model="invert2" step="1000" min="20000"  max="500000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
+      <md-slider ng-model="calcService.initialDebt" step="1000" min="20000"  max="500000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
     </md-slider-container>
     <md-input-container>
-        <input flex ng-model="invert2" aria-label="regular-slider">
+        <input flex ng-model="calcService.initialDebt" aria-label="regular-slider">
       </md-input-container>
 
             </md-card-content>

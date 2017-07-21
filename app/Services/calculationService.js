@@ -3,7 +3,7 @@
  * Author: David Isovitsch
  */
 
-angular.module("retirementRoad").service('calculationService', ["$timeout", function() {
+angular.module("retirementRoad").service('calculationService', ["$interval", function($interval) {
 
     var self = this;
 
@@ -22,17 +22,27 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
     var MAX_RETIREMENT_PERCENTAGE = 15;
     var TAX_RATE = 33;
 
-    self.initialSalary = 0;
-    self.salary = self.initialSalary;
-    self.initialDebt = 0;
-    self.debt = self.initialDebt;
-    self.initialAge = 18;
-    self.age = self.initialAge;
+    self.data = {
+        initialSalary: 0,
+        salary: 0,
+        initialDebt: 0,
+        debt: 0,
+        initialAge: 18,
+        age: 0,
+        savings: 0,
+        retirementBalance: 0,
+        retirementPercentage: 0,
+        debtPayment: 0,
+        month: 0
+    }
 
-    self.savings = 0;
-    self.retirementBalance = 0;
-    self.retirementPercentage = 0;
-    self.debtPayment = 0;
+    self.getData = function() {
+        return self.data;
+    }
+
+    self.setData = function(data) {
+        self.data = data;
+    }
 
     self.month = 0;
 
@@ -41,19 +51,22 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
 
     self.startGame = function() {
         /* Kick-off time cycle */
-        var secondsPerMonth = MAX_GAME_TIME_IN_SECONDS / self.calculateNumberOfMonthsUntilRetirementAge(self.age * MONTHS_IN_YEAR);
-        self.debtPayment = self.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
+        self.data.age = self.data.initialAge;
+        self.data.salary = self.data.initialSalary;
+        self.data.debt = self.data.initialDebt;
+        var secondsPerMonth = MAX_GAME_TIME_IN_SECONDS / self.calculateNumberOfMonthsUntilRetirementAge(self.data.age * MONTHS_IN_YEAR);
+        self.debtPayment = self.data.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
 
-        $timeout(function() {
-            self.month++;
-            if (self.month % 12) {  /* Every year */
-                self.salary = self.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
-                self.age++;
+        $interval(function() {
+            self.data.month++;
+            if (self.data.month % 12) {  /* Every year */
+                self.data.salary = self.data.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
+                self.data.age++;
             }
 
-            self.debt = self.debt - debtPayment;
-            self.savings = self.savings + self.calculateSavingsAmount(self.retirementPercentage, self.debtPayment);
-            self.retirementBalance = (self.retirementBalance * (1 + (RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100))) + (self.salary * (self.retirementPercentage / 100));
+            self.data.debt = self.data.debt - self.data.debtPayment;
+            self.data.savings = self.data.savings + self.calculateSavingsAmount(self.data.retirementPercentage, self.data.debtPayment);
+            self.data.retirementBalance = (self.data.retirementBalance * (1 + (RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100))) + (self.data.salary * (self.data.retirementPercentage / 100));
             
         }, secondsPerMonth * 1000);
     }
@@ -126,4 +139,5 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
 	    return months;
     }
 
+    return self;
 }]);

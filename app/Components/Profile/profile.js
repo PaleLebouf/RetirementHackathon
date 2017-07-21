@@ -1,10 +1,6 @@
 var app=angular.module("retirementRoad");
-app.controller("ProfileController",function($scope){
+app.controller("ProfileController", ["$scope", "calculationService", function($scope, calcService){
 
-
-
-$scope.age=["18","22","26"];
-
-
-
-});
+    $scope.calcService = calcService.data;
+    $scope.age=["18","22","26"];
+}]);

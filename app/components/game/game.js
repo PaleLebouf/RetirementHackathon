@@ -1,6 +1,6 @@
 (function () {
-    function gameCtrl($scope) {
-
+    function gameCtrl($scope, calcService) {
+        calcService.startGame();
     }
-    angular.module('retirementRoad').controller("gameCtrl", ["$scope", gameCtrl])
+    angular.module('retirementRoad').controller("gameCtrl", ["$scope", "calculationService", gameCtrl])
 })();
