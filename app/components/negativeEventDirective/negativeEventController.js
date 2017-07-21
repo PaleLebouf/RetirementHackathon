@@ -1,6 +1,6 @@
 (function() {
 
-    function negativeEventController($scope, $interval, $mdDialog)
+    function negativeEventController($scope, $interval, $mdDialog, calculationService)
     {
 
         $scope.showJobLoss = function(ev) {
@@ -57,7 +57,9 @@
             });
             
         };
-        
+        $scope.ok = function() {
+            calculationService.data.paused = false;
+        }
 
         $scope.cancel = function() {
                 $mdDialog.cancel();
