@@ -14,18 +14,18 @@
       <div id = "eventContainer">
        <div id = "eventTitle"><h1>You Win!</h1></div>
       <div id = "eventCost"><h2>Score: {{endScore}}</h2></div>
-      <div id = "eventImage"><img src="/Assets/images/medicalEmergency.png"></div>
-      <div id = "eventDescription">You suffered a serious medical emergency. You'll have to find a way to pay those medical bills.</div>
+      <div id = "eventImage"><img src="/Assets/images/social.png"></div>
+      <div id = "eventDescription">Congratulations, you're prepared to live in retirement!<br />Are you ready to start for real? Contact Nationwide Financial!</div>
       </div>
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
       <div id = "optionsContainer">
-      <md-button ng-click="answer('not useful'); cancel()">
-       Pull from Retirement
+      <md-button ng-click="answer('not useful'); cancel()" href="https://www.nrsforu.com/iApp/rsc/retirementPlanner/launchRetirementPlanner.action?publication=nrsforu">
+       Nationwide Retirement Planner
       </md-button>
       <md-button ng-click="answer('useful'); cancel()">
-        Increase Debt
+        Play Again
       </md-button>
       </div>
       

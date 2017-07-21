@@ -18,7 +18,7 @@ function endScreenController($scope, $interval, $mdDialog, calculationService)
             }, function() {
             $scope.status = 'You cancelled the dialog.';
             });
-            calcScore();
+            calculationService.data.paused = true;
         };
 
         $scope.cancel = function() {
@@ -28,7 +28,6 @@ function endScreenController($scope, $interval, $mdDialog, calculationService)
         var calcScore = function() {
             $scope.endScore = calculationService.calculateScore();
         };
-
         $interval(calcScore, 500);
     };
 
