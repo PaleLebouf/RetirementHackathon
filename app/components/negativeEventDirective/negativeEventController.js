@@ -8,7 +8,7 @@
         $scope.showJobLoss = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
             $mdDialog.show({
-            controller: DialogController,
+            controller: negativeEventController,
             templateUrl: 'components/negativeEventDirective/negativeEventTemplate.html',
             parent: angular.element(document.body),
             targetEvent: ev,
@@ -20,6 +20,10 @@
             }, function() {
             $scope.status = 'You cancelled the dialog.';
             });
+
+             $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
 
             
         };
