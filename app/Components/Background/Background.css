@@ -2,13 +2,22 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+    z-index: 0;
 }
 
 .panel-body {
-  position:relative; 
+    position:relative; 
+    top: 0;
+    left: 0;
+    margin-top: -101vh;
+    width:100vw;
+    height: 100vh;
+    overflow-x: hidden;
+  
 }
 
 .middleground{
+    position: relative;
     width: 100vw;
     height: 100vh;
 }
@@ -37,4 +46,14 @@
 
 .panel {
   overflow:hidden;
+}
+
+.bikerMan
+{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin-left:45vw;
+    margin-top:-60vh;
+    z-index: 1;
 }
