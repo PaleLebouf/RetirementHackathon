@@ -14,5 +14,9 @@ app.config(['$routeProvider', '$locationProvider',
            templateUrl: 'components/map/map.html',
            controller: 'mapCtrl'
        })
+       .when('/profile', {
+           templateUrl: 'components/Profile/profile.html',
+           controller: 'ProfileController'
+       })
        .otherwise('/start');   
 }]);
