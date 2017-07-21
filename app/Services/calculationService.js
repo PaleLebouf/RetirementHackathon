@@ -107,12 +107,23 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
     /*
     * Calculate how much a person's future retirement balance will be in n months.
     */
-    self.calculateFutureRetirementBalance = function (existingBalance, months) {
-    	var calculation = 1 + ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100) /  NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR);
-	    calculation = calculation ** (NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR * (months / MONTHS_IN_YEAR));
-	    var balance = calculation * existingBalance;
+    self.calculateFutureRetirementBalance = function (startingSalary, existingBalance, retirementContributionPercentage, months) {
+	    var balance = existingBalance;
+	    var salary = startingSalary;
 
-	    return balance;
+	    for (var i = 1; i <= months; i++) {
+		    balance = balance + (balance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100));
+		
+		    /* Add in a salary raise each year */
+		    if ((i % MONTHS_IN_YEAR) == 0) {
+			    salary = salary + (salary * (AVERAGE_RAISE_PERCENTAGE / 100));
+		    }
+		
+		    /* Add in retirement contribution */
+		    balance = balance + ((salary / MONTHS_IN_YEAR) * (retirementContributionPercentage / 100));
+
+	        return balance;
+        }
     }
 
     /*
