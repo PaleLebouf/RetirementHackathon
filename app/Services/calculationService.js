@@ -67,9 +67,10 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     * Calculate the savings amount given the retirement percentage and the debt payment
     */
     self.calculateSavingsAmount = function (salary, retirementPercentage, debtPayment) {
-        var retirementSavings = salary * (retirementPercentage / 100);
-        var taxes = (salary - retirementSavings) * (TAX_RATE / 100);
-        var takeHomePay = salary - retirementSavings - taxes;
+        var monthlySalary = salary / MONTHS_IN_YEAR;
+        var retirementSavings = monthlySalary * (retirementPercentage / 100);
+        var taxes = (monthlySalary - retirementSavings) * (TAX_RATE / 100);
+        var takeHomePay = monthlySalary - retirementSavings - taxes;
         var expenses = takeHomePay * (INITIAL_COST_OF_LIVING / 100);
         var savings = takeHomePay - debtPayment - expenses;
 
