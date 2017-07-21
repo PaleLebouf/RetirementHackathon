@@ -58,7 +58,8 @@
             
         };
         $scope.ok = function() {
-            calculationService.data.paused = false;
+            //calculationService.data.paused = false;
+            $scope.showMap("");
         }
 
             $scope.showMap = function(ev) {

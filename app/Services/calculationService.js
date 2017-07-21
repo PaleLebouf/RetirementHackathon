@@ -18,7 +18,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     var MONTHS_IN_YEAR = 12;
     var PERCENTAGE_OF_SALARY_FOR_DEBT_PAYOFF = 1;
     var DEBT_MINIMUM_PAYMENT_PERCENTAGE = 1;
-    var MAX_GAME_TIME_IN_SECONDS = 300;
+    var MAX_GAME_TIME_IN_SECONDS = 240;
     var MAX_RETIREMENT_PERCENTAGE = 15;
     var TAX_RATE = 33;
     var SCORE_WIN_BONUS = 100000;
