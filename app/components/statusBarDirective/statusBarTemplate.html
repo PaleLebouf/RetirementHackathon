@@ -1,0 +1,26 @@
+<div ng-controller="statusBarCtrl" id="bottomBanner" layout="row" layout-align="space-around center" class="ng-scope layout-row layout-align-space-around-center">
+
+
+    <div id="ageContainer">
+        <h2>Age:</h2>
+        <span id="age" odometer="{{$scope.calcService.age}}" ></span>
+    </div>
+
+    <div id="checkingContainer">
+        <h2>Savings:</h2>
+        <span id="checking" odometer="{{$scope.calcService.savings | currency}}" odometer-options="{animation: 'count', format: '(,ddd).dd', duration: 3000}"></span>
+    </div>
+
+    <div id="retirementContainer">
+        <h2>Retirement:</h2>
+        <span id="retirement" odometer="{{$scope.calcService.retirementBalance | currency}}" odometer-options="{format: '(,ddd).dd', duration: 3000}"></span>
+    </div>
+
+    <div id="debtContainer">
+        <h2>Debt:</h2>
+        <span id="debt" odometer="{{$scope.calcService.debt | currency}}" odometer-options="{format: '(,ddd).dd', duration: 3000}"></span>
+    </div>
+    <div id = "pullOverButtonContainer">
+        <md-button id="pullOverButton" class="md-accent md-raised"><span id="pauseButton">&#10073&#10073</span> Pull Over</md-button>
+    </div>
+</div>
