@@ -51,8 +51,9 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
                 self.data.age++;
             }
             if (self.data.debt > 0) {
-                if (self.data.debtPayment > self.data.debt) {
+                if (self.data.debtPayment >= self.data.debt) {
                     self.data.debt = 0;
+                    self.data.debtPayment = 0;
                 } else {
                     self.data.debt = self.data.debt - self.data.debtPayment;
                 }
