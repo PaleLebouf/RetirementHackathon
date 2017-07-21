@@ -1,0 +1,41 @@
+#eventContainer{
+    text-align: center;
+    width:60vw;
+    padding:0;
+    margin: 0;
+   
+}
+
+#eventTitle h1{
+    font-size: 4vw;    
+    margin: 0;
+}
+
+#eventCost h2{
+
+    font-size: 2vw;
+    margin: 0; 
+    
+}
+
+#eventImage{
+    width: 70%;
+    /*text-align: center;
+    align-content: center;*/
+    margin: auto;
+}
+
+#eventImage img{
+    width: 70%;
+}
+
+#eventDescription{
+     font-size: 2vw; 
+     margin:0;
+}
+
+
+md-dialog{
+    border-radius:30px;
+    /*background-color: #00B3E3;*/
+}
