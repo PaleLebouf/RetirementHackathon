@@ -7,7 +7,7 @@
     position:fixed;
    left:0px;
    bottom:0px;
-   height:15vh;
+   height:17vh;
    width:100%;
 }
 
@@ -18,6 +18,10 @@
 #ageContainer, #debtContainer, #checkingContainer, #retirementContainer h2{
     color:white;
     text-align: center;
-    background-color: grey;
 }
 
+.odometer-digit:nth-last-child(2){
+    color:black !important;
+    background-color:white !important;
+    background-image: -webkit-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%) !important;
+}
