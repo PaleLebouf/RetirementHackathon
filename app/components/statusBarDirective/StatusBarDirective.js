@@ -10,7 +10,7 @@
 
         $scope.pauseClick = function() {
             $scope.data.paused = true;
-            showMedicalEmergency($event)   
+            showMedicalEmergency($event);   
         }
     }
 
