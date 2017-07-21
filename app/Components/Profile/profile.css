@@ -1,10 +1,17 @@
-body{
-    background-image: url("/Assets/images/road.svg");
-    background-size: 900px 900px;
-    background-position: left top;
+.background-pic{
+    background-image: url("/assets/images/road.svg");
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    
 }
 
+body.md-default-theme, body, html.md-default-theme, html{
+    background-color: rgb(33, 134, 73);
+}
+
+
 .content{
-    padding: 20px 10%;
+    padding: 50px 10%;
 
 }
