@@ -23,9 +23,9 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     var TAX_RATE = 33;
 
     self.data = {
-        initialSalary: 0,
+        initialSalary: 35000,
         salary: 0,
-        initialDebt: 0,
+        initialDebt: 20000,
         debt: 0,
         initialAge: 18,
         age: 0,
@@ -36,33 +36,23 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         month: 0
     }
 
-    self.getData = function() {
-        return self.data;
-    }
-
-    self.setData = function(data) {
-        self.data = data;
-    }
-
-    self.month = 0;
-
     self.startGame = function() {
         /* Kick-off time cycle */
         self.data.age = self.data.initialAge;
         self.data.salary = self.data.initialSalary;
         self.data.debt = self.data.initialDebt;
         var secondsPerMonth = MAX_GAME_TIME_IN_SECONDS / self.calculateNumberOfMonthsUntilRetirementAge(self.data.age * MONTHS_IN_YEAR);
-        self.debtPayment = self.data.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
+        self.data.debtPayment = self.data.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
 
         $interval(function() {
-            self.month++;
+            self.data.month++;
             if ((self.data.month % 12) == 0) {  /* Every year */
                 self.data.salary = self.data.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
                 self.data.age++;
             }
 
             self.data.debt = self.data.debt - self.data.debtPayment;
-            self.data.savings = self.data.savings + self.calculateSavingsAmount(self.data.retirementPercentage, self.data.debtPayment);
+            self.data.savings = self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment);
             self.data.retirementBalance = (self.data.retirementBalance * (1 + (RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100))) + (self.data.salary * (self.data.retirementPercentage / 100));
             
         }, secondsPerMonth * 1000);
@@ -71,10 +61,10 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     /*
     * Calculate the savings amount given the retirement percentage and the debt payment
     */
-    self.calculateSavingsAmount = function (retirementPercentage, debtPayment) {
-        var retirementSavings = self.salary * (retirementPercentage / 100);
-        var taxes = (self.salary - retirementSavings) * (TAX_RATE / 100);
-        var takeHomePay = self.salary - retirementSavings - taxes;
+    self.calculateSavingsAmount = function (salary, retirementPercentage, debtPayment) {
+        var retirementSavings = salary * (retirementPercentage / 100);
+        var taxes = (salary - retirementSavings) * (TAX_RATE / 100);
+        var takeHomePay = salary - retirementSavings - taxes;
         var expenses = takeHomePay * (INITIAL_COST_OF_LIVING / 100);
         var savings = takeHomePay - debtPayment - expenses;
 
