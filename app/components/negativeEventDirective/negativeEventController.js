@@ -12,7 +12,7 @@
             templateUrl: 'components/negativeEventDirective/negativeEventTemplate.html',
             parent: angular.element(document.body),
             targetEvent: ev,
-            clickOutsideToClose:true,
+            clickOutsideToClose:false,
             fullscreen: false // Only for -xs, -sm breakpoints.
             })
             .then(function(answer) {
@@ -20,14 +20,13 @@
             }, function() {
             $scope.status = 'You cancelled the dialog.';
             });
-
-             $scope.cancel = function() {
-                $mdDialog.cancel();
-            };
-
             
+        };
+
+        $scope.cancel = function() {
+                $mdDialog.cancel();
         };
     };
 
-    angular.module('retirementRoad').controller('negativeEventController', negativeEventController)
+    angular.module('retirementRoad').controller('negativeEventController', negativeEventController);
 })();
