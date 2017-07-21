@@ -12,7 +12,7 @@
 }
 
 #age, #retirement, #checking, #debt{
-    font-size:3vw;
+    font-size:2.5vw;
 }
 
 #ageContainer, #debtContainer, #checkingContainer, #retirementContainer h2{
@@ -24,4 +24,14 @@
     color:black !important;
     background-color:white !important;
     background-image: -webkit-linear-gradient(top, #eee0d3 0%, #eee0d3 40%, #bbaa9a 60%, #eee0d3 80%, #eee0d3 100%) !important;
+}
+
+#pullOverButtonContainer{
+    margin-top: 5%;
+}
+
+#pullOverButton{
+    vertical-align: bottom;
+    font-size:1.2vw;
+
 }
