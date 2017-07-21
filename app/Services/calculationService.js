@@ -36,9 +36,6 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
 
     self.month = 0;
 
-    function updateMonth() {
-    }
-
     self.startGame = function() {
         /* Kick-off time cycle */
         var secondsPerMonth = MAX_GAME_TIME_IN_SECONDS / self.calculateNumberOfMonthsUntilRetirementAge(self.age * MONTHS_IN_YEAR);
