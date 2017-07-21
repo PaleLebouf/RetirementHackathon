@@ -85,7 +85,7 @@
         $scope.showMap = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
             $mdDialog.show({
-            controller: negativeEventController,
+            controller: 'negativeEventController',
             templateUrl: 'components/map/map.html',
             parent: angular.element(document.body),
             targetEvent: ev,
