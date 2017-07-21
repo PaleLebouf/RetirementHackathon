@@ -7,7 +7,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
 
     var self = this;
 
-    var INITIAL_COST_OF_LIVING = 35;
+    var INITIAL_COST_OF_LIVING = 70;
     var INFLATION_PERCENTAGE = 3;
     var AVERAGE_RAISE_PERCENTAGE = 3;
     var RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE = 7;
@@ -31,7 +31,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         age: 0,
         savings: 0,
         retirementBalance: 0,
-        retirementPercentage: 0,
+        retirementPercentage: 6,
         debtPayment: 0,
         month: 0
     }
