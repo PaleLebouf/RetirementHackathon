@@ -3,7 +3,7 @@
  * Author: David Isovitsch
  */
 
-angular.module("retirementRoad").service('calculationService', function() {
+angular.module("retirementRoad").service('calculationService', ["$timeout", function() {
 
     var self = this;
 
@@ -17,14 +17,22 @@ angular.module("retirementRoad").service('calculationService', function() {
     var NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR = 12;
     var MONTHS_IN_YEAR = 12;
     var PERCENTAGE_OF_SALARY_FOR_DEBT_PAYOFF = 1;
+    var DEBT_MINIMUM_PAYMENT_PERCENTAGE = 1;
     var MAX_GAME_TIME_IN_SECONDS = 300;
+    var MAX_RETIREMENT_PERCENTAGE = 15;
+    var TAX_RATE = 33;
 
-    self.startingSalary = 0;
-    self.salary = self.startingSalary;
+    self.initialSalary = 0;
+    self.salary = self.initialSalary;
     self.initialDebt = 0;
     self.debt = self.initialDebt;
     self.initialAge = 18;
     self.age = self.initialAge;
+
+    self.savings = 0;
+    self.retirementBalance = 0;
+    self.retirementPercentage = 0;
+    self.debtPayment = 0;
 
     self.month = 0;
 
@@ -33,6 +41,33 @@ angular.module("retirementRoad").service('calculationService', function() {
 
     self.startGame = function() {
         /* Kick-off time cycle */
+        var secondsPerMonth = MAX_GAME_TIME_IN_SECONDS / self.calculateNumberOfMonthsUntilRetirementAge(self.age * MONTHS_IN_YEAR);
+        self.debtPayment = self.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
+
+        $timeout(function() {
+            self.month++;
+            if (self.month % 12) {  /* Every year */
+                self.salary = self.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
+                self.age++;
+            }
+
+            self.debt = self.debt - debtPayment;
+            self.savings = self.savings + self.calculateSavingsAmount(self.retirementPercentage, self.debtPayment);
+            
+        }, secondsPerMonth * 1000);
+    }
+
+    /*
+    * Calculate the savings amount given the retirement percentage and the debt payment
+    */
+    self.calculateSavingsAmount = function (retirementPercentage, debtPayment) {
+        var retirementSavings = self.salary * (retirementPercentage / 100);
+        var taxes = (self.salary - retirementSavings) * (TAX_RATE / 100);
+        var takeHomePay = self.salary - retirementSavings - taxes;
+        var expenses = takeHomePay * (INITIAL_COST_OF_LIVING / 100);
+        var savings = takeHomePay - debtPayment - expenses;
+
+        return savings;
     }
 
     /*
@@ -52,7 +87,7 @@ angular.module("retirementRoad").service('calculationService', function() {
     */
     self.calculateAmountNeededForRetirement = function (startingSalary, startingAge) {
     	var numberOfMonthsWorking = (TARGET_RETIREMENT_AGE - startingAge) * MONTHS_IN_YEAR; 
-	    var finalSalary = calculateCompoundInterest(startingSalary, AVERAGE_RAISE_PERCENTAGE, numberOfMonthsWorking);
+	    var finalSalary = self.calculateCompoundInterest(startingSalary, AVERAGE_RAISE_PERCENTAGE, numberOfMonthsWorking);
 	    var amountNeededEachYearInRetirement = finalSalary * (PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT / 100);
 	    var numberOfYearsInRetirement = TARGET_LIFE_EXPECTANCY - TARGET_RETIREMENT_AGE;
 	    var amountNeededForRetirement = finalSalary * numberOfYearsInRetirement;
@@ -90,4 +125,4 @@ angular.module("retirementRoad").service('calculationService', function() {
 	    return months;
     }
 
-});
+}]);
