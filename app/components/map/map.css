@@ -1,8 +1,10 @@
 .map {
     width: 75vw;
+    height: 75vh;
     margin: 0 auto;
 }
 
 .map img{
     width: 100%;
+    height: 100%;
 }

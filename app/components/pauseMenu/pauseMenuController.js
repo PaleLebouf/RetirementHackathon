@@ -1,13 +1,11 @@
-(function() {
+(function(){
 
-    function negativeEventController($scope, $interval, $mdDialog)
-    {
-
-        $scope.showJobLoss = function(ev) {
+    function pauseMenuController($scope, $mdDialog){
+        $scope.showMenu = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
             $mdDialog.show({
-            controller: negativeEventController,
-            templateUrl: 'components/map/map.html',
+            controller: pauseMenuController,
+            templateUrl: 'components/pauseMenu/pauseMenuTemplate.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose:false,
@@ -26,5 +24,6 @@
         };
     };
 
-    angular.module('retirementRoad').controller('negativeEventController', negativeEventController);
+    angular.module('retirementRoad').controller('pauseMenuController', pauseMenuController);
+
 })();
