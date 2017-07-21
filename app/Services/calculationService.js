@@ -58,7 +58,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
                 }
             }
             self.data.savings = self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment);
-            self.data.retirementBalance = (self.data.retirementBalance * (1 + (RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100))) + (self.data.salary * (self.data.retirementPercentage / 100));
+            self.data.retirementBalance = self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100));
             
         }, secondsPerMonth * 1000);
     }
