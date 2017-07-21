@@ -21,6 +21,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     var MAX_GAME_TIME_IN_SECONDS = 300;
     var MAX_RETIREMENT_PERCENTAGE = 15;
     var TAX_RATE = 33;
+    var SCORE_WIN_BONUS = 100000;
 
     self.data = {
         initialSalary: 35000,
@@ -147,9 +148,32 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     * Calculate the player's score.
     */
     self.calculateScore = function () {
-        var score = 100;
+        var score = 0;
+
+        if (self.isGameWon()) {
+            score = score + SCORE_WIN_BONUS;
+        }
+
+        if (self.data.debt == 0) {
+            score = score + self.data.initialDebt;
+        }
+
+        score = score + Math.round(self.data.savings);
 
         return score;
+    }
+
+    /*
+    * Determine if the player won the game.
+    */
+    self.isGameWon = function () {
+        var won = false;
+
+        if (self.data.retirementBalance >= self.calculateAmountNeededForRetirement()) {
+            won = true;
+        }
+
+        return won;
     }
 
     return self;
