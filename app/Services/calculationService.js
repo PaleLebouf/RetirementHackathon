@@ -46,7 +46,6 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
 
         $timeout(function() {
             self.month++;
-            if (self.month % 12) {  /* Every year */
             if ((self.month % 12) == 0) {  /* Every year */
                 self.salary = self.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
                 self.age++;
@@ -92,7 +91,7 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
 	    var finalSalary = self.calculateCompoundInterest(startingSalary, AVERAGE_RAISE_PERCENTAGE, numberOfMonthsWorking);
 	    var amountNeededEachYearInRetirement = finalSalary * (PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT / 100);
 	    var numberOfYearsInRetirement = TARGET_LIFE_EXPECTANCY - TARGET_RETIREMENT_AGE;
-	    var amountNeededForRetirement = finalSalary * numberOfYearsInRetirement;
+	    var amountNeededForRetirement = amountNeededEachYearInRetirement * numberOfYearsInRetirement;
 
 	    return amountNeededForRetirement;
     }
