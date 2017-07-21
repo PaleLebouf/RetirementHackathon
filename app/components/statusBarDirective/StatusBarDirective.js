@@ -17,14 +17,19 @@
         })
 
         $scope.pauseClick = function() {
-            $scope.data.paused = true;
-            if ($scope.data.stage == 2) {
-                $scope.showJobLoss("");
+            if ($scope.data.stage != 1) {
+                $scope.data.paused = true;
+                if ($scope.data.stage == 2) {
+                    $scope.showJobLoss("");
+                }
+                else if ($scope.data.stage == 3) {
+                    $scope.showMedicalEmergency("")
+                }
+                else if ($scope.data.stage > 3) {
+                    $scope.showWin("");
+                }
+                $scope.data.stage++;
             }
-            else if ($scope.data.stage == 3) {
-                $scope.showMedicalEmergency("")
-            }
-            $scope.data.stage++;
         }
 
         $scope.showJobLoss = function(ev) {
@@ -98,6 +103,25 @@
             $scope.status = 'You cancelled the dialog.';
             });
         }
+
+        $scope.showWin = function(ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+            
+            $mdDialog.show({
+            controller: "endScreenController",
+            templateUrl: 'components/endScreen/endScreenTemplate.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:false,
+            fullscreen: true // Only for -xs, -sm breakpoints.
+            })
+            .then(function(answer) {
+            $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+            $scope.status = 'You cancelled the dialog.';
+            });
+            calculationService.data.paused = true;
+        };
         
 
         $scope.cancel = function() {
