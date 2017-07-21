@@ -173,7 +173,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     self.isGameWon = function () {
         var won = false;
 
-        if (self.data.retirementBalance >= self.calculateAmountNeededForRetirement()) {
+        if ((self.data.retirementBalance + self.data.savings - self.data.debt) >= self.calculateAmountNeededForRetirement()) {
             won = true;
         }
 
