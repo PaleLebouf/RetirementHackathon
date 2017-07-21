@@ -11,7 +11,7 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
     var INFLATION_PERCENTAGE = 3;
     var AVERAGE_RAISE_PERCENTAGE = 3;
     var RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE = 7;
-    var PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT = 85;
+    var PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT = 35;
     var TARGET_RETIREMENT_AGE = 65;
     var TARGET_LIFE_EXPECTANCY = 85;
     var NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR = 12;
@@ -83,8 +83,7 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
     }
 
     /*
-    * Calculate the amount a person will need for retirement.  Per Mark, a person will need about 80 - 85% of their 
-    * final salary each year in retirement.
+    * Calculate the amount a person will need for retirement.
     */
     self.calculateAmountNeededForRetirement = function (startingSalary, startingAge) {
     	var numberOfMonthsWorking = (TARGET_RETIREMENT_AGE - startingAge) * MONTHS_IN_YEAR; 
