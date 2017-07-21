@@ -7,6 +7,7 @@
             "assets/images/4flags.svg"
         ]
         $scope.data = calcService.data;
+        $scope.data.paused = true;
     }
     angular.module('retirementRoad').controller("mapCtrl", ["$scope", "calculationService", mapCtrl])
 })();

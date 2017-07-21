@@ -1,33 +1,54 @@
+<div layout="row" layout-align="space-around center">
+    <div>
+        <md-card layout-align="center">
+            <md-card-title >
+                
+                <md-card-title-text>
+                <span class="md-headline">Finanial Details</span>
+                </md-card-title-text>
+                </md-card-title> 
 
-<div>
-    <md-card layout-align="center">
+            <md-card-content>
+                <div><span>Total Savings</span></div>
+                <h3>{{data.savings | currency}}</h3>
+                <div><span>Total Debt</span></div>
+                <h3>{{data.debt | currency}}</h3>
+                <div><span>Retirement Balance</span></div>
+                <h3>{{data.retirementBalance | currency}}</h3>
+            </md-card-content>
+        </md-card>
+        <md-card layout-align="center">
+            <md-card-title >
+                
+                <md-card-title-text>
+                <span class="md-headline">Finanial Adjustments</span>
+                </md-card-title-text>
+                </md-card-title> 
+
+            <md-card-content>
+                <div><span>Retirement Contribution (Percentage of Salary)</span></div>
+                <md-slider-container>
+                    <md-slider md-discrete ng-model="data.retirementPercentage" step="1" min="0"  max="15"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
+                    <md-input-container>
+                        <input flex type="number" ng-model="data.retirementPercentage">
+                    </md-input-container>
+                </md-slider-container>
+                <div><span>Additional Debt Payment (Above the Minimum)</span></div>
+                <md-slider-container>
+                    <md-slider ng-model="data.additionDebtPayment" step="1" min="0"  max="1000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
+                    <md-input-container>
+                        <input flex type="number" ng-model="data.additionDebtPayment">
+                    </md-input-container>
+                </md-slider-container>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div>
+        <md-card layout-align="center">
         <md-card-title >
             
             <md-card-title-text>
-            <span class="md-headline">Create Your Profile</span>
-            <span class="md-subhead">Where do you see yourself in Retirement? </span>
-            </md-card-title-text>
-            </md-card-title> 
-
-        <md-card-content>
-            <md-slider-container>
-                <div>
-                <span>Starting Salary:</span>
-                </div>
-                <md-slider ng-model="calcService.initialSalary" step="1000" min="20000"  max="500000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
-            </md-slider-container>
-            <md-input-container>
-                <input flex ng-model="calcService.initialSalary" aria-label="regular-slider">
-            </md-input-container>
-        </md-card-content>
-    </md-card>
-
-    <md-card layout-align="center">
-        <md-card-title >
-            
-            <md-card-title-text>
-            <span class="md-headline">Create Your Profile</span>
-            <span class="md-subhead">Where do you see yourself in Retirement? </span>
+            <span class="md-headline">Progess Indicator</span>
             </md-card-title-text>
             </md-card-title> 
 
@@ -35,5 +56,5 @@
             <div class="map"><img src="{{stages[data.stage-1]}}"></div>
         </md-card-content>
     </md-card>
- 
+    </div>
 </div>

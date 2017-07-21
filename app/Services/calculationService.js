@@ -36,7 +36,8 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         debtPayment: 0,
         month: 0,
         stage: 1,
-        paused: false
+        paused: false,
+        additionDebtPayment: 0
     }
 
     self.startGame = function() {
