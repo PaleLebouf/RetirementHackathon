@@ -4,26 +4,37 @@
     height: 100vh;
 }
 
-.animate-enter, 
-.animate-leave
-{ 
-    -webkit-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-} 
- 
-.animate-enter {
-    left: 100%;
+.panel-body {
+  position:relative; 
 }
-.animate-enter.animate-enter-active {
-    left: 0;
+
+.middleground{
+    width: 100vw;
+    height: 100vh;
 }
- 
-.animate-leave {
-    left: 0;
+.my-switch-animation.ng-enter,
+.my-switch-animation.ng-leave {
+  -webkit-transition:2s linear all;
+  -moz-transition:2s linear all;
+  -o-transition:2s linear all;
+  transition:2s linear all;
+
+  position:absolute;
 }
-.animate-leave.animate-leave-active{
-    left: -100%;
+
+.my-switch-animation.ng-enter {
+  left:100%;
+}
+
+.my-switch-animation.ng-leave,
+.my-switch-animation.ng-enter.ng-enter-active {
+  left:0;
+}
+
+.my-switch-animation.ng-leave.ng-leave-active {
+  left:-100%;
+}
+
+.panel {
+  overflow:hidden;
 }

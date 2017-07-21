@@ -2,12 +2,17 @@
 
     function backgroundController($scope, $interval)
     {
-        var moveTick = function() {
-            $scope.moveTick = true;
-            $scope.moveTick = false;
+        var swapImage = function() {
+            
+            if($scope.image == "one")
+                $scope.image = "two";
+            else if ($scope.image == "two")
+                $scope.image = "one";
         }
 
-        $interval(moveTick, 1000);
+        $scope.image = "one";
+
+        $interval(swapImage, 2000);
     }
 
     angular.module("retirementRoad").controller("backgroundController", backgroundController);

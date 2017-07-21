@@ -1,4 +1,6 @@
-<img class="staticBackground" src="/assets/parallaxBackgrounds/roadParallaxBG1-Cut.png" />
-<div ng-switch on="moveTick">
-    <div class="animate" ng-switch-when="moveTick"><img class="movingBackground" src="/"
+<div ng-controller="backgroundController">
+    <div class="panel-body" ng-switch="image" >
+        <img ng-switch-when="one" class="my-switch-animation middleground" src="assets/parallaxBackgrounds/roadParallax1-Cut.png" />
+        <img ng-switch-when="two" class="my-switch-animation middleground" src="assets/parallaxBackgrounds/roadParallax1-Cut.png" />
+    </div>
 </div>
