@@ -1,1 +1,8 @@
-<img class="staticBackground" src="/assets/prrallaxBackgrounds/roadParallaxBG1.png" />
+<div ng-controller="backgroundController">
+    <img class="staticBackground" src="assets/parallaxBackgrounds/roadParallaxBG3-Cut.png" />
+    <div class="panel-body" ng-switch="image" >
+        <img ng-switch-when="one" class="my-switch-animation middleground" src="assets/parallaxBackgrounds/roadParallax3-Cut.png" />
+        <img ng-switch-when="two" class="my-switch-animation middleground" src="assets/parallaxBackgrounds/roadParallax3-Cut.png" />
+    </div>
+    <img class="bikerMan" src="assets/images/biker.gif"/>
+</div>

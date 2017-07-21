@@ -1,5 +1,7 @@
 body{
-    background-image: url("road.svg");
+    background-image: url("/Assets/images/road.svg");
+    background-size: 900px 900px;
+    background-position: left top;
 }
 
 .content{

@@ -2,25 +2,58 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+    z-index: 0;
 }
 
-.scroll-enter, 
-.scroll-leave
-{ 
-    -webkit-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 2000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-} 
- 
-.scroll-enter {
-    left: 100%;
-}
-.scroll-enter.scroll-enter-active {
+.panel-body {
+    position:relative; 
+    top: 0;
     left: 0;
+    margin-top: -101vh;
+    width:100vw;
+    height: 100vh;
+    overflow-x: hidden;
+  
 }
- 
-.scroll-leave {
-    left: 0;
+
+.middleground{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+.my-switch-animation.ng-enter,
+.my-switch-animation.ng-leave {
+  -webkit-transition:2s linear all;
+  -moz-transition:2s linear all;
+  -o-transition:2s linear all;
+  transition:2s linear all;
+
+  position:absolute;
+}
+
+.my-switch-animation.ng-enter {
+  left:100%;
+}
+
+.my-switch-animation.ng-leave,
+.my-switch-animation.ng-enter.ng-enter-active {
+  left:0;
+}
+
+.my-switch-animation.ng-leave.ng-leave-active {
+  left:-100%;
+}
+
+.panel {
+  overflow:hidden;
+}
+
+.bikerMan
+{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin-left:45vw;
+    margin-top:-60vh;
+    z-index: 1;
 }

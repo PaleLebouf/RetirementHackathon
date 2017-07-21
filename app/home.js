@@ -1,4 +1,4 @@
-var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute",'ui.odometer'])
+var app = angular.module("retirementRoad", ["ngMaterial", "ngRoute",'ui.odometer', "ngAnimate"]);
 app.config(['$routeProvider', '$locationProvider',
  function ($routeProvider) {
      $routeProvider
@@ -13,6 +13,10 @@ app.config(['$routeProvider', '$locationProvider',
        .when('/pause', {
            templateUrl: 'components/map/map.html',
            controller: 'mapCtrl'
+       })
+       .when('/profile', {
+           templateUrl: 'components/Profile/profile.html',
+           controller: 'ProfileController'
        })
        .otherwise('/start');   
 }]);
