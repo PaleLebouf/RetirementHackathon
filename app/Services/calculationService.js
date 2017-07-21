@@ -47,6 +47,7 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
         $timeout(function() {
             self.month++;
             if (self.month % 12) {  /* Every year */
+            if ((self.month % 12) == 0) {  /* Every year */
                 self.salary = self.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
                 self.age++;
             }
