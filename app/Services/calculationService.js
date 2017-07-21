@@ -53,7 +53,7 @@ angular.module("retirementRoad").service('calculationService', ["$timeout", func
 
             self.debt = self.debt - debtPayment;
             self.savings = self.savings + self.calculateSavingsAmount(self.retirementPercentage, self.debtPayment);
-            self.retirementBalance = self.retirementBalance + (self.salary * (self.retirementPercentage / 100));
+            self.retirementBalance = (self.retirementBalance * (1 + (RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100))) + (self.salary * (self.retirementPercentage / 100));
             
         }, secondsPerMonth * 1000);
     }
