@@ -1,12 +1,12 @@
 (function () {
-    function mapCtrl($scope) {
+    function mapCtrl($scope, calcService) {
         $scope.stages = [
             "assets/images/1flag.svg",
-            "assets/images/2flag.svg",
-            "assets/images/3flag.svg",
-            "assets/images/4flag.svg"
+            "assets/images/2flags.svg",
+            "assets/images/3flags.svg",
+            "assets/images/4flags.svg"
         ]
-        $scope.stage = 0;
+        $scope.data = calcService.data;
     }
-    angular.module('retirementRoad').controller("mapCtrl", ["$scope", mapCtrl])
+    angular.module('retirementRoad').controller("mapCtrl", ["$scope", "calculationService", mapCtrl])
 })();

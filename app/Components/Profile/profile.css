@@ -6,12 +6,8 @@
     
 }
 
-body.md-default-theme, body, html.md-default-theme, html{
-    background-color: rgb(33, 134, 73);
-}
-
-
 .content{
     padding: 50px 10%;
-
+    height: 100vh;
+    background-color: rgb(33, 134, 73);
 }

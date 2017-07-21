@@ -33,7 +33,9 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         retirementBalance: 0,
         retirementPercentage: 6,
         debtPayment: 0,
-        month: 0
+        month: 0,
+        stage: 1,
+        paused: false
     }
 
     self.startGame = function() {
@@ -45,22 +47,23 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         self.data.debtPayment = self.data.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
 
         $interval(function() {
-            self.data.month++;
-            if ((self.data.month % 12) == 0) {  /* Every year */
-                self.data.salary = self.data.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
-                self.data.age++;
-            }
-            if (self.data.debt > 0) {
-                if (self.data.debtPayment >= self.data.debt) {
-                    self.data.debt = 0.00;
-                    self.data.debtPayment = 0;
-                } else {
-                    self.data.debt = +((self.data.debt - self.data.debtPayment).toFixed(2));
+            if (!self.data.paused) {
+                self.data.month++;
+                if ((self.data.month % 12) == 0) {  /* Every year */
+                    self.data.salary = self.data.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
+                    self.data.age++;
                 }
+                if (self.data.debt > 0) {
+                    if (self.data.debtPayment >= self.data.debt) {
+                        self.data.debt = 0.00;
+                        self.data.debtPayment = 0;
+                    } else {
+                        self.data.debt = +((self.data.debt - self.data.debtPayment).toFixed(2));
+                    }
+                }
+                self.data.savings = +((self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment)).toFixed(2));
+                self.data.retirementBalance = self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100));
             }
-            self.data.savings = +((self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment)).toFixed(2));
-            self.data.retirementBalance = self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100));
-            
         }, secondsPerMonth * 1000);
     }
 
