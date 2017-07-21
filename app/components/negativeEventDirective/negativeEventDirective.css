@@ -32,10 +32,28 @@
 #eventDescription{
      font-size: 2vw; 
      margin:0;
+     padding:50px;
 }
 
 
 md-dialog{
     border-radius:30px;
     /*background-color: #00B3E3;*/
+}
+
+#optionsContainer{
+    margin:auto;
+}
+
+#optionsContainer .md-button{
+    background-color:#0071CE;
+    color:white;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#optionsContainer .md-button:hover{
+    background-color:#0063b5;
 }
