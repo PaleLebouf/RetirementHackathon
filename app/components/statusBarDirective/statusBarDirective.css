@@ -3,21 +3,26 @@
 }
 
 #bottomBanner{
-    background-color: grey;
+    background: #ddd ; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ddd, #999 ); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ddd, #999); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ddd, #999); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ddd, #999); /* Standard syntax */
+    box-shadow: 0 1px 3px 3px rgba(0,0,0,0.2);
     position:fixed;
    left:0px;
    bottom:0px;
-   height:17vh;
+   height:12vh;
    width:100%;
+}
+
+#bottomBanner h2 {
+    margin: 2px;
+    text-align: center;
 }
 
 #age, #retirement, #checking, #debt{
     font-size:2.5vw;
-}
-
-#ageContainer, #debtContainer, #checkingContainer, #retirementContainer h2{
-    color:white;
-    text-align: center;
 }
 
 .odometer-digit:nth-last-child(2){
@@ -27,11 +32,18 @@
 }
 
 #pullOverButtonContainer{
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 #pullOverButton{
-    vertical-align: bottom;
+   
+   background-color: #0071CE ;
     font-size:1.2vw;
+    padding:.5vw;
+    border-radius:8px;
+    
+}
 
+#pauseButton{
+    padding-right: 8px;
 }
