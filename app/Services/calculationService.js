@@ -12,6 +12,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     var AVERAGE_RAISE_PERCENTAGE = 3;
     var RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE = 7;
     var PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT = 85;
+    var PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT = 35;
     var TARGET_RETIREMENT_AGE = 65;
     var TARGET_LIFE_EXPECTANCY = 85;
     var NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR = 12;
@@ -46,9 +47,6 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
 
     self.month = 0;
 
-    function updateMonth() {
-    }
-
     self.startGame = function() {
         /* Kick-off time cycle */
         self.data.age = self.data.initialAge;
@@ -58,8 +56,8 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         self.debtPayment = self.data.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
 
         $interval(function() {
-            self.data.month++;
-            if (self.data.month % 12) {  /* Every year */
+            self.month++;
+            if ((self.data.month % 12) == 0) {  /* Every year */
                 self.data.salary = self.data.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
                 self.data.age++;
             }
@@ -96,15 +94,14 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     }
 
     /*
-    * Calculate the amount a person will need for retirement.  Per Mark, a person will need about 80 - 85% of their 
-    * final salary each year in retirement.
+    * Calculate the amount a person will need for retirement.
     */
     self.calculateAmountNeededForRetirement = function (startingSalary, startingAge) {
     	var numberOfMonthsWorking = (TARGET_RETIREMENT_AGE - startingAge) * MONTHS_IN_YEAR; 
 	    var finalSalary = self.calculateCompoundInterest(startingSalary, AVERAGE_RAISE_PERCENTAGE, numberOfMonthsWorking);
 	    var amountNeededEachYearInRetirement = finalSalary * (PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT / 100);
 	    var numberOfYearsInRetirement = TARGET_LIFE_EXPECTANCY - TARGET_RETIREMENT_AGE;
-	    var amountNeededForRetirement = finalSalary * numberOfYearsInRetirement;
+	    var amountNeededForRetirement = amountNeededEachYearInRetirement * numberOfYearsInRetirement;
 
 	    return amountNeededForRetirement;
     }
@@ -121,12 +118,23 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     /*
     * Calculate how much a person's future retirement balance will be in n months.
     */
-    self.calculateFutureRetirementBalance = function (existingBalance, months) {
-    	var calculation = 1 + ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / 100) /  NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR);
-	    calculation = calculation ** (NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR * (months / MONTHS_IN_YEAR));
-	    var balance = calculation * existingBalance;
+    self.calculateFutureRetirementBalance = function (startingSalary, existingBalance, retirementContributionPercentage, months) {
+	    var balance = existingBalance;
+	    var salary = startingSalary;
 
-	    return balance;
+	    for (var i = 1; i <= months; i++) {
+		    balance = balance + (balance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100));
+		
+		    /* Add in a salary raise each year */
+		    if ((i % MONTHS_IN_YEAR) == 0) {
+			    salary = salary + (salary * (AVERAGE_RAISE_PERCENTAGE / 100));
+		    }
+		
+		    /* Add in retirement contribution */
+		    balance = balance + ((salary / MONTHS_IN_YEAR) * (retirementContributionPercentage / 100));
+
+	        return balance;
+        }
     }
 
     /*
