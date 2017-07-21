@@ -1,0 +1,34 @@
+<md-dialog aria-label="You Suffered a Medical Emergency">
+  <form ng-cloak>
+    <!--<md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Mango (Fruit)</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>-->
+
+    <md-dialog-content>
+      <div id = "eventContainer">
+       <div id = "eventTitle"><h1>You Win!</h1></div>
+      <div id = "eventCost"><h2>Score: {{endScore}}</h2></div>
+      <div id = "eventImage"><img src="/Assets/images/social.png"></div>
+      <div id = "eventDescription">Congratulations, you're prepared to live in retirement!<br />Are you ready to start for real? Contact Nationwide Financial!</div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <div id = "optionsContainer">
+      <md-button ng-click="answer('not useful'); cancel()" href="https://www.nrsforu.com/iApp/rsc/retirementPlanner/launchRetirementPlanner.action?publication=nrsforu">
+       Nationwide Retirement Planner
+      </md-button>
+      <md-button ng-click="answer('useful'); cancel()">
+        Play Again
+      </md-button>
+      </div>
+      
+    </md-dialog-actions>
+  </form>
+</md-dialog>
