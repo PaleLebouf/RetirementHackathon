@@ -7,21 +7,26 @@
 
         $scope.showJobLoss = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
-            var confirm = $mdDialog.confirm()
-                .title('You\'re Fired!')
-                .textContent('You lost your job, you\'ll be living of your savings for a while.')
-                .ariaLabel('Lucky day')
-                .targetEvent(ev)
-                .ok('Sweet')
-                .cancel('Just What I Wanted');
-
-            $mdDialog.show(confirm).then(function() {
-            $scope.status = 'You decided to get rid of your debt.';
+            $mdDialog.show({
+            controller: negativeEventController,
+            templateUrl: 'components/negativeEventDirective/negativeEventTemplate.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:false,
+            fullscreen: false // Only for -xs, -sm breakpoints.
+            })
+            .then(function(answer) {
+            $scope.status = 'You said the information was "' + answer + '".';
             }, function() {
-            $scope.status = 'You decided to keep your debt.';
+            $scope.status = 'You cancelled the dialog.';
             });
+            
+        };
+
+        $scope.cancel = function() {
+                $mdDialog.cancel();
         };
     };
 
-    angular.module('retirementRoad').controller('negativeEventController', negativeEventController)
+    angular.module('retirementRoad').controller('negativeEventController', negativeEventController);
 })();
