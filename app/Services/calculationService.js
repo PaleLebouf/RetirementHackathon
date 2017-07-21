@@ -143,5 +143,14 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
 	    return months;
     }
 
+    /*
+    * Calculate the player's score.
+    */
+    self.calculateScore = function () {
+        var score = 100;
+
+        return score;
+    }
+
     return self;
 }]);
