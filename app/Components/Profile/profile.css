@@ -1,10 +1,10 @@
-body{
-    background-image: url("/Assets/images/road.svg");
-    background-size: 900px 900px;
-    background-position: left top;
+.background-pic{
+    background-image: url("/assets/images/road.svg");
+    background-size: relative;
+   
 }
 
 .content{
-    padding: 20px 10%;
+    padding: 2px 10%;
 
 }
