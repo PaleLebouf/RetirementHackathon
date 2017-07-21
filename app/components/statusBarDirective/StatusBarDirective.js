@@ -7,6 +7,11 @@
 
     function statusBarCtrl($scope, calcService) {
         $scope.data = calcService.data;
+
+        $scope.pauseClick = function() {
+            $scope.data.paused = true;
+            showMedicalEmergency($event)   
+        }
     }
 
     angular.module('retirementRoad')

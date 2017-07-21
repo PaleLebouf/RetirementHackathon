@@ -1,1 +1,39 @@
-<div class="map"><img src="{{stages[stage]}}"></div>
+
+<div>
+    <md-card layout-align="center">
+        <md-card-title >
+            
+            <md-card-title-text>
+            <span class="md-headline">Create Your Profile</span>
+            <span class="md-subhead">Where do you see yourself in Retirement? </span>
+            </md-card-title-text>
+            </md-card-title> 
+
+        <md-card-content>
+            <md-slider-container>
+                <div>
+                <span>Starting Salary:</span>
+                </div>
+                <md-slider ng-model="calcService.initialSalary" step="1000" min="20000"  max="500000"  aria-label="regular slider" class="md-warn md-hue-2"></md-slider>
+            </md-slider-container>
+            <md-input-container>
+                <input flex ng-model="calcService.initialSalary" aria-label="regular-slider">
+            </md-input-container>
+        </md-card-content>
+    </md-card>
+
+    <md-card layout-align="center">
+        <md-card-title >
+            
+            <md-card-title-text>
+            <span class="md-headline">Create Your Profile</span>
+            <span class="md-subhead">Where do you see yourself in Retirement? </span>
+            </md-card-title-text>
+            </md-card-title> 
+
+        <md-card-content>
+            <div class="map"><img src="{{stages[data.stage-1]}}"></div>
+        </md-card-content>
+    </md-card>
+ 
+</div>
