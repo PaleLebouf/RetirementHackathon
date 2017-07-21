@@ -52,13 +52,13 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
             }
             if (self.data.debt > 0) {
                 if (self.data.debtPayment >= self.data.debt) {
-                    self.data.debt = 0;
+                    self.data.debt = 0.00;
                     self.data.debtPayment = 0;
                 } else {
-                    self.data.debt = self.data.debt - self.data.debtPayment;
+                    self.data.debt = +((self.data.debt - self.data.debtPayment).toFixed(2));
                 }
             }
-            self.data.savings = self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment);
+            self.data.savings = +((self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment)).toFixed(2));
             self.data.retirementBalance = self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100));
             
         }, secondsPerMonth * 1000);
