@@ -21,11 +21,14 @@
         };
 
         var swapImage = function() {
-            
-            if($scope.image == "one")
-                $scope.image = "two";
-            else if ($scope.image == "two")
-                $scope.image = "one";
+            if (!calculationService.data.paused) {
+                if($scope.image == "one") {
+                    $scope.image = "two";
+                }
+                else if ($scope.image == "two") {
+                    $scope.image = "one";
+                }
+            }
         };
 
         $scope.image = "one";
