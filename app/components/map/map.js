@@ -7,12 +7,10 @@
             "assets/images/4flags.svg"
         ]
         $scope.data = calcService.data;
-        $scope.data.paused = true;
-        $scope.cancel = function() {
-                $mdDialog.cancel();
-        };
+        
         $scope.ok = function() {
             $scope.data.paused = false;
+            $mdDialog.cancel();
         }
     }
     angular.module('retirementRoad').controller("mapCtrl", ["$scope", "calculationService", "$mdDialog", mapCtrl])
