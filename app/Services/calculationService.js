@@ -7,7 +7,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
 
     var self = this;
 
-    var INITIAL_COST_OF_LIVING = 70;
+    var INITIAL_COST_OF_LIVING = 90;
     var INFLATION_PERCENTAGE = 3;
     var AVERAGE_RAISE_PERCENTAGE = 3;
     var RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE = 7;
@@ -203,7 +203,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     self.isGameWon = function () {
         var won = false;
 
-        if ((self.data.retirementBalance + self.data.savings - self.data.debt) >= self.calculateAmountNeededForRetirement()) {
+        if ((self.data.retirementBalance + self.data.savings - self.data.debt) >= self.calculateAmountNeededForRetirement(self.data.initialSalary, self.data.initialAge)) {
             won = true;
         }
 
