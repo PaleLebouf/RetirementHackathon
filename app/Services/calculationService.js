@@ -45,6 +45,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
         self.data.age = self.data.initialAge;
         self.data.salary = self.data.initialSalary;
         self.data.debt = self.data.initialDebt;
+        self.data.month = self.data.initialAge * MONTHS_IN_YEAR;
         var secondsPerMonth = MAX_GAME_TIME_IN_SECONDS / self.calculateNumberOfMonthsUntilRetirementAge(self.data.age * MONTHS_IN_YEAR);
         self.data.debtPayment = self.data.debt * (DEBT_MINIMUM_PAYMENT_PERCENTAGE / 100);
         if (self.data.debtPayment < 50) {

@@ -14,18 +14,25 @@
                 eventService.showDebtPaidOff()
                 $scope.data.stage++;
             }
-        })
+        });
+
+        $scope.pullover = function() {
+            eventService.showMap();
+        }
 
         $scope.pauseClick = function() {
             if ($scope.data.stage != 1) {
                 $scope.data.paused = true;
                 if ($scope.data.stage == 2) {
+                    calcService.calculateValuesforMonths(calcService.calculateNumberOfMonthsUntilRetirementAge(calcService.data.month) / 2);
                     eventService.showJobLoss();
                 }
                 else if ($scope.data.stage == 3) {
+                    calcService.calculateValuesforMonths(calcService.calculateNumberOfMonthsUntilRetirementAge(calcService.data.month) / 2);
                     eventService.showMedicalEmergency()
                 }
                 else if ($scope.data.stage > 3) {
+                    calcService.calculateValuesforMonths(calcService.calculateNumberOfMonthsUntilRetirementAge(calcService.data.month));
                     eventService.showWin();
                 }
                 $scope.data.stage++;
