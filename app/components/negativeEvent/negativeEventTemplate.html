@@ -1,0 +1,40 @@
+<md-dialog aria-label="You Lost Your Job!">
+  <form ng-cloak>
+    <!--<md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Mango (Fruit)</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>-->
+
+    <md-dialog-content>
+      <div id = "eventContainer">
+       <div id = "eventTitle"><h1>{{event.title}}</h1></div>
+      <div id = "eventCost"><h2>Cost: <span ng-init="eventCost = event.getCost()">{{event.getCost() | currency}}</span></h2></div>
+      <div id = "eventImage"><img src="{{event.imageUrl}}"></div>
+      <div id = "eventDescription">{{event.description.base}} 
+        <span ng-if="isExpenseNotCovered">{{event.description.notCovered}}</span>
+        <span ng-if="isExpenseCovered">{{event.description.covered}}</span>
+      </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <div id="optionsContainer">
+        <div ng-if="isExpenseNotCovered">
+          <md-button ng-click="ok(); cancel()">
+          Pull from Retirement
+          </md-button>
+          <md-button ng-click="ok(); cancel()">
+            Increase Debt
+          </md-button>
+        </div>
+        <div ng-if="isExpenseCovered"> <md-button ng-click="ok();cancel();">Ok</md-button> </div>
+      </div>
+      
+    </md-dialog-actions>
+  </form>
+</md-dialog>

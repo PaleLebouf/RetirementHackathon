@@ -65,7 +65,8 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
             if ((self.data.month % 12) == 0) {  /* Every year */
                 self.data.salary = salaryIncrease(self.data.salary, 1);
                 self.data.age++;
-            } else if ((self.data.month % 6) == 0) {
+            }
+            if ((self.data.month % 6) == 0) {
                 calculateFinancials(6);
             }
         }

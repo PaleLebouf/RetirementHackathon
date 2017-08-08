@@ -1,16 +1,45 @@
 angular.module("retirementRoad").service('eventService', ["$mdDialog", "calculationService", function($mdDialog, calculationService) {
     var self = this;
+    var negativeEvents = [
+        {
+            controller: "negativeEventController",
+            templateUrl: "components/negativeEvent/negativeEventTemplate.html",
+            title: "You've Lost Your Job",
+            imageUrl: "/Assets/images/jobloss.jpg",
+            description: {
+                base: "You lost your job.",
+                covered: "Luckily you had an emergency fund to cover your time in between jobs. Way to be prepared!",
+                notCovered:"You'll have to come up with the money from somewhere." 
+            },
+            getCost: function(){ return (calculationService.data.salary / 12) * 3; }
+        },
+        {
+            controller: "negativeEventController",
+            templateUrl: "components/negativeEvent/negativeEventTemplate.html",
+            title: "There's Been a Medical Emergency",
+            imageUrl: "/Assets/images/medicalEmergency.png",
+            description: {
+                base: "You suffered a serious medical emergency.",
+                covered: "However you were prepared to cover your unexpected expense.",
+                notCovered:"You'll have to find a way to pay those medical bills." 
+            },
+            getCost: function(){ return 25000; }
+        }
+    ];
+    self.activeEvent = {};
 
     self.showJobLoss = function() {
-        showGameDialog('negativeEventController', 'components/negativeEventDirective/events/negativeEventTemplate.html');
+        self.activeEvent = negativeEvents[0];
+        showGameDialog(self.activeEvent.controller, self.activeEvent.templateUrl);
     };
 
     self.showMedicalEmergency = function() {
-        showGameDialog('negativeEventController', 'components/negativeEventDirective/events/negativeEventMedicalTemplate.html');
+        self.activeEvent = negativeEvents[1];
+        showGameDialog(self.activeEvent.controller, self.activeEvent.templateUrl);
     };
 
     self.showDebtPaidOff = function() {
-        showGameDialog('negativeEventController', 'components/negativeEventDirective/events/debtPaidTemplate.html');
+        showGameDialog("positiveEventController", "components/positiveEvent/eventTemplates/debtPaidTemplate.html");
     };
 
     self.showMap = function() {
