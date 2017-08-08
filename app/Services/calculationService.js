@@ -53,23 +53,48 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
 
         $interval(function() {
             if (!self.data.paused) {
-                self.data.month++;
-                if ((self.data.month % 12) == 0) {  /* Every year */
-                    self.data.salary = self.data.salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100));
-                    self.data.age++;
-                }
+                self.calculateValuesforMonths(1);
+            }
+        }, secondsPerMonth * 1000);
+    }
+
+    self.calculateValuesforMonths = function(months) {
+        for (var i = 0; i < months; i++) {
+            self.data.month++;
+            if ((self.data.month % 12) == 0) {  /* Every year */
+                self.data.salary = salaryIncrease(self.data.salary, 1);
+                self.data.age++;
+            } else if ((self.data.month % 6) == 0) {
+                calculateFinancials(6);
+            }
+        }
+
+        function salaryIncrease(startingSalary, years) {
+            var salary = startingSalary;
+            for (var i = 0; i < years; i++) {
+                salary = formatNumberForCurrency(salary * (1 + (AVERAGE_RAISE_PERCENTAGE / 100)));
+            }
+            return salary;
+        }
+
+        function calculateFinancials(months) {
+            for (var i = 0; i < months; i++) {
                 if (self.data.debt > 0) {
                     if (self.data.debtPayment >= self.data.debt) {
                         self.data.debt = 0.00;
                         self.data.debtPayment = 0;
                     } else {
-                        self.data.debt = +((self.data.debt - self.data.debtPayment).toFixed(2));
+                        self.data.debt = formatNumberForCurrency((self.data.debt - self.data.debtPayment));
                     }
                 }
-                self.data.savings = +((self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment)).toFixed(2));
-                self.data.retirementBalance = self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100));
+                self.data.savings = formatNumberForCurrency((self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment)));
+                self.data.retirementBalance = formatNumberForCurrency(self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100)));
             }
-        }, secondsPerMonth * 1000);
+        }
+    }
+
+    function formatNumberForCurrency(num) {
+        return Number(num.toFixed(2));
     }
 
     /*
