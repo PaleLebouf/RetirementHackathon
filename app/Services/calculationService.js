@@ -11,7 +11,7 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     var INFLATION_PERCENTAGE = 3;
     var AVERAGE_RAISE_PERCENTAGE = 3;
     var RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE = 7;
-    var PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT = 35;
+    var PERCENTAGE_OF_FINAL_INCOME_NEEDED_IN_RETIREMENT = 80;
     var TARGET_RETIREMENT_AGE = 65;
     var TARGET_LIFE_EXPECTANCY = 85;
     var NUMBER_OF_TIMES_INTEREST_IS_COMPOUNDED_PER_YEAR = 12;
@@ -24,9 +24,9 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     var SCORE_WIN_BONUS = 100000;
 
     self.data = {
-        initialSalary: 35000,
+        initialSalary: 42500,
         salary: 0,
-        initialDebt: 1000,
+        initialDebt: 36000,
         debt: 0,
         initialAge: 18,
         age: 0,
@@ -171,11 +171,8 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
     /*
     * This method will return the number of months in which a person's debt will be paid off.
     */
-    self.calculateDebtPayoff = function (initialDebt, startingSalary) {
-    	var payment = startingSalary * (PERCENTAGE_OF_SALARY_FOR_DEBT_PAYOFF / 100);
-    	var months = initialDebt / payment;
-	
-	    return months;
+    self.calculateMonthsUntilDebtPayoff = function () {
+        return Math.round(self.data.debt / (self.data.debtPayment + self.data.additionDebtPayment))
     }
 
     /*
