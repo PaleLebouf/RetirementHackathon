@@ -91,7 +91,8 @@ angular.module("retirementRoad").service('calculationService', ["$interval", fun
                 }
                 self.data.savings = formatNumberForCurrency((self.data.savings + self.calculateSavingsAmount(self.data.salary, self.data.retirementPercentage, self.data.debtPayment)));
                 if (self.data.savings < 0) {
-                    self.data.debt = self.data.debt + (0 - self.data.savings);
+                    //TODO: Name Hackathon Team
+                    //self.data.debt = formatNumberForCurrency(self.data.debt + (0 - self.data.savings));
                     self.data.savings = 0.00;
                 }
                 self.data.retirementBalance = formatNumberForCurrency(self.data.retirementBalance + (self.data.retirementBalance * ((RATE_OF_RETURN_ON_INVESTMENT_PERCENTAGE / MONTHS_IN_YEAR) / 100)) + (self.data.salary * ((self.data.retirementPercentage / MONTHS_IN_YEAR) / 100)));
